@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="entry-title">
+        <span>Sign Up</span>
+      </h1>
+      <hr>
+      <!-- notification bar -->
+      <div *ngIf="informationBar.title.length > 0" class="alert alert-success">
+        <strong>{{informationBar.title}}!</strong> {{informationBar.message}}
+      </div>
+      <form class="form-horizontal" [formGroup]="signupForm" enctype="multipart/form-data" id="signup" name="signup" (ngSubmit)="submit()">
+
+        <!-- form controls -->
+        <div class="form-group">
+          <label class="control-label col-sm-3">Email ID
+            <span class="text-danger">*</span>
+          </label>
+
+          <div class="col-md-8 col-sm-9">
+            <div class="input-group">
+              <input type="email" formControlName="email" [(ngModel)]="record.email" class="form-control" id="emailid" name="emailid">
+            </div>
+            <small>Your Email Id is being used for ensuring the security of your account, authorization and access recovery.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3">Set Password
+            <span class="text-danger">*</span>
+          </label>
+
+          <div class="col-md-5 col-sm-8">
+            <div class="input-group">
+              <input formControlName="password" [(ngModel)]="record.password" class="form-control" id="password" name="password" type="password"
+                value="">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3">Confirm Password
+            <span class="text-danger">*</span>
+          </label>
+
+          <div class="col-md-5 col-sm-8">
+            <div class="input-group">
+              <input formControlName="cpassword" class="form-control" [(ngModel)]="record.cpassword" id="cpassword" name="cpassword" type="password"
+                value="">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3"> First Name
+            <span class="text-danger">*</span>
+          </label>
+          <div class="col-md-5 col-sm-8">
+            <div class="input-group">
+              <input formControlName="firstName" class="form-control" [(ngModel)]="record.first_name" id="mem_name" name="mem_name" type="text"
+                value="">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3"> Last Name
+            <span class="text-danger">*</span>
+          </label>
+          <div class="col-md-5 col-sm-8">
+            <div class="input-group">
+              <input formControlName="lastName" class="form-control" id="last_name" [(ngModel)]="record.last_name" name="last_name" type="text"
+                value="">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3">Date of Birth
+            <span class="text-danger">*</span>
+          </label>
+          <div class="col-md-6">
+            <mat-form-field>
+              <input formControlName="dob" [(ngModel)]="record.dob" id="dob" readonly name="dob" matInput [matDatepicker]="picker" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3">Gender
+            <span class="text-danger">*</span>
+          </label>
+
+          <div class="col-md-8 col-sm-9">
+            <label>
+              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="record.gender" checked name="gender" type="radio" value="m"> Male</label>
+            <label>
+              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="record.gender" name="gender" type="radio" value="f"> Female</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3">Contact No.
+            <span class="text-danger">*</span>
+          </label>
+
+          <div class="col-md-5 col-sm-8">
+            <div class="input-group">
+              <input formControlName="contactNumber" class="form-control" [(ngModel)]="record.contact_number" id="contactnum" name="contactnum"
+                type="text" value="">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-offset-3 col-md-8 col-sm-9">
+            <span class="text-muted">
+              <span class="label label-danger">Note:-</span> By clicking Sign Up, you agree to our
+              <a href="#">Terms</a> and that you have read our
+              <a href="#">Policy</a>, including our
+              <a href="#">Cookie Use</a>.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-offset-3 col-xs-10">
+            <input [disabled]="!signupForm.valid" class="btn btn-primary" name="Submit" type="submit" value="Sign Up">
+          </div>
+        </div>
+        <div class="panel-footer ">
+          Have an account!
+          <a routerLink="/login"> Sign In Here </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
