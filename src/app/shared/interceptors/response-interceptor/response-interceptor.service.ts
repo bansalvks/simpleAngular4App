@@ -12,18 +12,18 @@ import {
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 
-import { GlobalFunctionService } from 'app/shared/services/helper-services/global-function/global-function.service';
+import { NotificationService } from 'app/shared/services/helper-services/notificaiton/notification.service';
 
 @Injectable()
 export class ResponseInterceptorService implements HttpInterceptor {
 
   constructor(
-    private _globalFunctionService: GlobalFunctionService
+    private _notificationService: NotificationService
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     debugger;
-    this._globalFunctionService.relogin();
+    this._notificationService.reLoginRequested.emit({user:'abc'});
     
     return next.handle(request).do(
       // success responses

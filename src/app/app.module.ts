@@ -22,6 +22,7 @@ import { MatSnackBarModule, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule, MatB
 import { GlobalFunctionService } from 'app/shared/services/helper-services/global-function/global-function.service';
 import { InputModalComponent } from 'app/shared/components/input-modal/input-modal.component';
 import { PersonService } from 'app/shared/services/api-services/person/person.service';
+import { NotificationService } from 'app/shared/services/helper-services/notificaiton/notification.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { PersonService } from 'app/shared/services/api-services/person/person.se
 
     GlobalDataService,
     GlobalFunctionService,
+    NotificationService,
 
     StorgeFactoryService,
     LocalStorageService,
