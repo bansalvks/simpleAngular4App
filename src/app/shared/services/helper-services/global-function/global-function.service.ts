@@ -2,14 +2,21 @@ import { PersonService } from 'app/shared/services/api-services/person/person.se
 import { Injectable } from '@angular/core';
 import { InputModalComponent } from 'app/shared/components/input-modal/input-modal.component';
 import { MatDialog } from '@angular/material';
+import { NotificationService } from 'app/shared/services/helper-services/notificaiton/notification.service';
 
 @Injectable()
 export class GlobalFunctionService {
 
   constructor(
     public dialog: MatDialog,
-    private _personService: PersonService
-  ) { }
+    private _personService: PersonService,
+    private _notificationService: NotificationService
+  ) {
+    this._notificationService.reLoginRequested.subscribe((userData) => {
+      console.log(userData)
+      this.relogin();
+    });
+   }
 
   relogin(): void {
     let dialogRef = this.dialog.open(InputModalComponent, {
